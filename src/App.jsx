@@ -1,8 +1,15 @@
+import Header from './components/Header';
+import Footer from './components/Footer';
+import StepList from './components/StepList';
+
 function App() {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">🎁 Gifting Campaign Builder</h1>
-      {/* We’ll add StepList component here later */}
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <Header />
+      <main className="flex-grow px-4 md:px-10 py-6">
+        <StepList />
+      </main>
+      <Footer />
     </div>
   );
 }

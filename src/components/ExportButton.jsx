@@ -17,7 +17,7 @@ function ExportButton() {
   return (
     <button
       onClick={handleExport}
-      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-md transition-all"
+      className="px-4 py-2 rounded shadow-md transition-all bg-blue-600 hover:bg-blue-700 text-white"
     >
       📤 Export Campaign
     </button>

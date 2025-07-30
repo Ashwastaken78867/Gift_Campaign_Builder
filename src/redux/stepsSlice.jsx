@@ -1,24 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  name: '',
-  createdBy: '',
-  createdAt: null,
-  steps: JSON.parse(localStorage.getItem('steps')) || [],
-};
-
-const campaignSlice = createSlice({
+const stepsSlice = createSlice({
   name: 'campaign',
-  initialState,
+  initialState: {
+    steps: JSON.parse(localStorage.getItem('steps')) || [],
+  },
   reducers: {
-    setCampaignMetadata: (state, action) => {
-      const { name, createdBy } = action.payload;
-      state.name = name;
-      state.createdBy = createdBy;
-      if (!state.createdAt) {
-        state.createdAt = new Date().toISOString();
-      }
-    },
     addStep: (state, action) => {
       state.steps.push(action.payload);
       localStorage.setItem('steps', JSON.stringify(state.steps));
@@ -35,26 +22,25 @@ const campaignSlice = createSlice({
         localStorage.setItem('steps', JSON.stringify(state.steps));
       }
     },
+    clearSteps: (state) => {
+      state.steps = [];
+      localStorage.setItem('steps', JSON.stringify(state.steps));
+    },
     reorderSteps: (state, action) => {
       const { fromIndex, toIndex } = action.payload;
       const [movedStep] = state.steps.splice(fromIndex, 1);
       state.steps.splice(toIndex, 0, movedStep);
       localStorage.setItem('steps', JSON.stringify(state.steps));
     },
-    clearSteps: (state) => {
-      state.steps = [];
-      localStorage.setItem('steps', JSON.stringify(state.steps));
-    },
   },
 });
 
 export const {
-  setCampaignMetadata,
   addStep,
   deleteStep,
   updateStepField,
-  reorderSteps,
   clearSteps,
-} = campaignSlice.actions;
+  reorderSteps
+} = stepsSlice.actions;
 
-export default campaignSlice.reducer;
+export default stepsSlice.reducer;

@@ -95,4 +95,7 @@ npm install
 
 # Run the app
 npm run dev
+```
+# Made with ❤️ by [Ash Bagda](https://github.com/Ashwastaken78867)
+
 

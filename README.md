@@ -23,6 +23,8 @@ This tool helps marketers and product teams design automated campaigns with step
 Check out the live version here:  
 🔗 [Deploy Link:](https://gift-campaign-builder.vercel.app/)
 
+![Campaign Builder Screenshot](./assets/SS5.png)
+
 ---
 
 ## 🛠️ Tech Stack

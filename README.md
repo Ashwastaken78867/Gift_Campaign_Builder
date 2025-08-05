@@ -21,7 +21,9 @@ This tool helps marketers and product teams design automated campaigns with step
 ## 🚀 Live Demo
 
 Check out the live version here:  
-🔗 [dashboard-builder-seven.vercel.app](https://gift-campaign-builder.vercel.app/)
+🔗 [Deploy Link:](https://gift-campaign-builder.vercel.app/)
+
+![Campaign Builder Screenshot](./assets/SS5.png)
 
 ---
 
@@ -96,6 +98,6 @@ npm install
 # Run the app
 npm run dev
 ```
-# Made with ❤️ by [Ash Bagda](https://github.com/Ashwastaken78867)
+# Made with  by [Ash Bagda](https://github.com/Ashwastaken78867)
 
 

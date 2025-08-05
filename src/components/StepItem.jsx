@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { updateStepField, deleteStep } from '../redux/campaignSlice';
+import { updateStepField } from '../redux/stepsSlice';
 
 function StepItem({ step }) {
   const dispatch = useDispatch();
@@ -9,80 +9,64 @@ function StepItem({ step }) {
   };
 
   const inputClass =
-    'w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500';
+    'w-full border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400';
 
-  return (
-    <div className="bg-white rounded-2xl shadow p-4 mb-4 border border-gray-200">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="text-lg font-semibold capitalize">{step.type} Step</h3>
-        <button
-          onClick={() => dispatch(deleteStep(step.id))}
-          className="text-red-500 hover:text-red-700 text-sm"
-        >
-          ❌ Remove
-        </button>
+  if (step.type === 'gift') {
+    return (
+      <div className="space-y-2 mt-2">
+        <input
+          type="text"
+          placeholder="Subject:"
+          value={step.data?.itemName || ''}
+          onChange={(e) => handleChange('itemName', e.target.value)}
+          className={inputClass}
+        />
+        <input
+          type="text"
+          placeholder="Description:"
+          value={step.data?.recipient || ''}
+          onChange={(e) => handleChange('recipient', e.target.value)}
+          className={inputClass}
+        />
       </div>
+    );
+  }
 
-      {/* Description */}
-      {step.description && (
-        <p className="text-gray-500 text-sm mb-3">{step.description}</p>
-      )}
+  if (step.type === 'wait') {
+    return (
+      <div className="mt-2 space-y-1">
+        <label className="text-xs text-gray-600">Wait (in days)</label>
+        <input
+          type="number"
+          min="1"
+          value={step.data?.duration || ''}
+          onChange={(e) => handleChange('duration', e.target.value)}
+          className={inputClass}
+        />
+      </div>
+    );
+  }
 
-      {/* Fields */}
-      {step.type === 'gift' && (
-        <div className="space-y-3">
-          <input
-            type="text"
-            placeholder="Gift Name"
-            value={step.giftName || ''}
-            onChange={(e) => handleChange('giftName', e.target.value)}
-            className={inputClass}
-          />
-          <textarea
-            placeholder="Gift Message"
-            value={step.giftMessage || ''}
-            onChange={(e) => handleChange('giftMessage', e.target.value)}
-            className={inputClass}
-          />
-        </div>
-      )}
+  if (step.type === 'condition') {
+    return (
+      <div className="mt-2 space-y-1">
+        <label className="text-xs text-gray-600">Trigger Condition</label>
+        <select
+          value={step.data?.conditionType || ''}
+          onChange={(e) => handleChange('conditionType', e.target.value)}
+          className={inputClass}
+        >
+          <option value="">-- Select --</option>
+          <option value="open">📬 Opened Email</option>
+          <option value="click">🔗 Clicked Link</option>
+          <option value="purchase">🛒 Made a Purchase</option>
+          <option value="idle">😴 No Activity</option>
+        </select>
+      </div>
+    );
+  }
 
-      {step.type === 'wait' && (
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-600">
-            Wait Duration (days)
-          </label>
-          <input
-            type="number"
-            min="1"
-            value={step.waitDays || ''}
-            onChange={(e) => handleChange('waitDays', e.target.value)}
-            className={inputClass}
-          />
-        </div>
-      )}
-
-      {step.type === 'condition' && (
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-600">
-            Triggered by user behavior
-          </label>
-          <select
-            value={step.conditionType || ''}
-            onChange={(e) => handleChange('conditionType', e.target.value)}
-            className={inputClass}
-          >
-            <option value="">-- Select --</option>
-            <option value="open">Opened Email</option>
-            <option value="click">Clicked Link</option>
-            <option value="purchase">Made a Purchase</option>
-            <option value="idle">No Activity</option>
-          </select>
-        </div>
-      )}
-    </div>
-  );
+  return null;
 }
 
 export default StepItem;

@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 
 function ExportButton() {
-  const steps = useSelector((state) => state.campaign.steps);
+  // Corrected selector to use the steps slice
+  const steps = useSelector((state) => state.steps.steps);
 
   const handleExport = () => {
     const dataStr = JSON.stringify(steps, null, 2);
@@ -11,7 +12,9 @@ function ExportButton() {
     const link = document.createElement('a');
     link.href = url;
     link.download = 'campaign.json';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link); // cleanup
   };
 
   return (

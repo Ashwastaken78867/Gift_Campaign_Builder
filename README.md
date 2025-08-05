@@ -1,12 +1,97 @@
-# React + Vite
+# 🎁 Gift Campaign Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A powerful and visually intuitive drag-and-drop email & gifting campaign workflow builder — inspired by tools like Iterable, ActiveCampaign, and Customer.io.
 
-Currently, two official plugins are available:
+This tool helps marketers and product teams design automated campaigns with steps like sending emails, adding wait timers, and branching conditions — all without writing code.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌟 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧩 **Drag-and-Drop Builder**: Easily add and rearrange campaign steps (Send Email, Wait, Condition).
+- 🧠 **Redux-Powered State**: Centralized and persistent state management using Redux Toolkit.
+
+- 💾 **LocalStorage Persistence**: Save and reload your campaign state between sessions.
+- 📐 **Responsive Layout**: Built with Tailwind CSS for modern and responsive UI.
+- 🖱️ **Interactive Sidebar**: Add steps dynamically from a dedicated step panel.
+
+---
+
+## 🚀 Live Demo
+
+Check out the live version here:  
+🔗 [dashboard-builder-seven.vercel.app](https://dashboard-builder-seven.vercel.app)
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer           | Technologies Used                                                |
+|----------------|------------------------------------------------------------------|
+| **Frontend**    | React + TypeScript + Vite                                        |
+| **Styling**     | Tailwind CSS + ShadCN UI                                         |
+| **State**       | Redux Toolkit + LocalStorage                                     |
+| **Drag & Drop** | [@hello-pangea/dnd](https://github.com/hello-pangea/dnd)        |
+| **Grid Layout** | [react-grid-layout](https://github.com/react-grid-layout/react-grid-layout) |
+| **Icons**       | [Lucide](https://lucide.dev/)                                    |
+
+---
+
+
+---
+
+## 🧱 Architecture & Approach
+
+### 🧠 State Management:
+- **Redux Toolkit** is used for managing all widget and campaign states (`stepsSlice`, `campaignSlice`).
+- Steps are stored in the Redux store and automatically persisted to `localStorage`.
+
+### 📦 Component Driven:
+- Reusable components like `StepItem`, `StepCard`, `Sidebar`, and `Header` follow clean separation of concerns.
+- Grid layout handled by `react-grid-layout` for precise step positioning.
+
+### 💡 Theming:
+- Integrated `next-themes` allows seamless toggling between dark/light modes.
+- Styles adapt using Tailwind’s dark mode classes.
+
+---
+
+## 🧩 How It Works
+
+1. 🖱 **User adds steps** (Send Email, Wait, Condition) via the sidebar.
+2. 🔀 **Steps appear in the canvas**, where they can be dragged around.
+3. 🧠 **All step state is managed in Redux**, and synced to LocalStorage.
+4. 🎨 **UI adjusts** to user theme preferences and screen size.
+
+---
+
+## 🧭 How to Scale It
+
+If taken to production, here's how you could **scale** the project:
+
+| Area                | How to Scale                                                  |
+|---------------------|---------------------------------------------------------------|
+| **Auth System**      | Add user login with JWT / OAuth (e.g. Clerk/Auth0).           |
+| **Database**         | Use MongoDB or PostgreSQL to persist campaigns across users.  |
+| **Realtime**         | Add socket support (e.g. `socket.io`) for live collaboration. |
+| **Workflow Engine**  | Backend system to execute workflows (Node.js queue, cronjobs). |
+| **Export Support**   | Export to JSON or APIs for campaign execution elsewhere.      |
+| **AI Assistant**     | Add GPT-powered suggestions for email copy, subject lines.    |
+
+---
+
+## 🧪 Local Development
+
+```bash
+# Clone the repo
+git clone https://github.com/Ashwastaken78867/Gift_Campaign_Builder.git
+
+# Navigate into the project
+cd Gift_Campaign_Builder
+
+# Install dependencies
+npm install
+
+# Run the app
+npm run dev
+

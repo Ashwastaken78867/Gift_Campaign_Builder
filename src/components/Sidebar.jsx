@@ -1,4 +1,3 @@
-// components/Sidebar.jsx
 import { useDispatch } from 'react-redux';
 import { addStep, clearSteps } from '../redux/campaignSlice';
 import { nanoid } from '@reduxjs/toolkit';
@@ -8,7 +7,7 @@ function Sidebar() {
 
   const handleAddStep = (type) => {
     const descriptions = {
-      gift: 'Send a personalized gift to the user.',
+      gift: 'Send a personalized email to the user.',
       wait: 'Wait for a specific time before next step.',
       condition: 'Check user action like open/click.',
     };
@@ -23,13 +22,44 @@ function Sidebar() {
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-md space-y-4">
-      <h2 className="text-lg font-semibold">Add Step</h2>
-      <button onClick={() => handleAddStep('gift')} className="block w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">➕ Send Gift</button>
-      <button onClick={() => handleAddStep('wait')} className="block w-full bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">⏱️ Wait</button>
-      <button onClick={() => handleAddStep('condition')} className="block w-full bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">🔀 Condition</button>
-      <button onClick={() => dispatch(clearSteps())} className="block w-full bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">🧹 Clear All</button>
-    </div>
+    <aside className="w-64 h-screen bg-white text-gray-900 p-6 space-y-6 shadow-md border-r flex flex-col">
+      <div>
+        <h2 className="text-xl font-semibold">Add Email Step</h2>
+        <p className="text-sm text-gray-600">Choose an action to add to your flow.</p>
+      </div>
+
+      <div className="space-y-3">
+        <button
+          onClick={() => handleAddStep('gift')}
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
+        >
+          📧 Send Email
+        </button>
+
+        <button
+          onClick={() => handleAddStep('wait')}
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black rounded-lg transition"
+        >
+          ⏱️ Wait Step
+        </button>
+
+        <button
+          onClick={() => handleAddStep('condition')}
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition"
+        >
+          🔀 Condition
+        </button>
+      </div>
+
+      <div className="pt-4 border-t border-gray-200 mt-auto">
+        <button
+          onClick={() => dispatch(clearSteps())}
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition"
+        >
+          🧹 Clear All Steps
+        </button>
+      </div>
+    </aside>
   );
 }
 

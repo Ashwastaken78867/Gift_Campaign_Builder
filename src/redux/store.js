@@ -1,12 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import campaignReducer from './campaignSlice';
+import stepsReducer from './stepsSlice'; // ✅ import stepsSlice
 
 // Load state from localStorage
 const loadState = () => {
   try {
-    const serialized = localStorage.getItem('campaignSteps');
+    const serialized = localStorage.getItem('steps');
     if (!serialized) return undefined;
-    return { campaign: { steps: JSON.parse(serialized) } };
+    return {
+      steps: { steps: JSON.parse(serialized) }, // ✅ load from steps key
+    };
   } catch {
     return undefined;
   }
@@ -15,7 +18,7 @@ const loadState = () => {
 // Save to localStorage
 const saveState = (state) => {
   try {
-    localStorage.setItem('campaignSteps', JSON.stringify(state.campaign.steps));
+    localStorage.setItem('steps', JSON.stringify(state.steps.steps)); // ✅ save stepsSlice state
   } catch (err) {
     console.error('LocalStorage save error:', err);
   }
@@ -24,6 +27,7 @@ const saveState = (state) => {
 const store = configureStore({
   reducer: {
     campaign: campaignReducer,
+    steps: stepsReducer, // ✅ add this line
   },
   preloadedState: loadState(),
 });

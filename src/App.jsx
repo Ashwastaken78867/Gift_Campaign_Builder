@@ -1,35 +1,40 @@
 import Header from './components/Header';
-import Footer from './components/Footer';
 import StepList from './components/StepList';
 import ExportButton from './components/ExportButton';
 import CampaignPreview from './components/CampaignPreview';
-import Sidebar from './components/Sidebar'; // ✅ new
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="flex flex-col h-screen overflow-hidden">
       <Header />
 
-      <main className="flex-grow px-4 md:px-10 py-6">
-        <div className="flex justify-end mb-4">
-          <ExportButton />
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar - Fixed width, full height */}
+        <div className="w-64 bg-gray-100 h-full">
+          <Sidebar />
         </div>
 
-        {/* ✅ Three Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <div className="md:col-span-3">
-            <Sidebar />
-          </div>
-          <div className="md:col-span-5">
-            <StepList />
-          </div>
-          <div className="md:col-span-4">
-            <CampaignPreview />
+        {/* Main content area */}
+        <div className="flex-1 h-full overflow-y-auto bg-gray-100 p-6">
+          <div className="flex flex-col h-full">
+            {/* Top right export button */}
+            <div className="flex justify-end mb-4">
+              <ExportButton />
+            </div>
+
+            {/* Main layout with middle (StepList) and right (Preview) */}
+            <div className="flex flex-1 gap-6">
+              <div className="flex-1 bg-white rounded-lg shadow p-4 overflow-y-auto">
+                <StepList />
+              </div>
+              <div className="w-64 bg-white rounded-lg shadow p-4 overflow-y-auto">
+                <CampaignPreview />
+              </div>
+            </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 }

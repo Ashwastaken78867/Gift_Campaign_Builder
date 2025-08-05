@@ -1,3 +1,4 @@
+
 // redux/stepsSlice.jsx
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
@@ -38,7 +39,7 @@ const stepsSlice = createSlice({
           itemName: '',
           recipient: '',
         };
-        newStep.description = 'Send a personalized gift to the user.';
+        newStep.description = 'Send a personalized email to the user.';
       }
 
       if (type === 'wait') {

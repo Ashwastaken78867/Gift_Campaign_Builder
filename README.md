@@ -6,21 +6,22 @@ This tool helps marketers and product teams design automated campaigns with step
 
 ---
 
-## 🌟 Features
+## 🧩 Features
 
-- 🧩 **Drag-and-Drop Builder**: Easily add and rearrange campaign steps (Send Email, Wait, Condition).
-- 🧠 **Redux-Powered State**: Centralized and persistent state management using Redux Toolkit.
-
-- 💾 **LocalStorage Persistence**: Save and reload your campaign state between sessions.
-- 📐 **Responsive Layout**: Built with Tailwind CSS for modern and responsive UI.
-- 🖱️ **Interactive Sidebar**: Add steps dynamically from a dedicated step panel.
-
+- 📧 **Send Gift**: Add a step to send personalized emails or gifts.
+- ⏱️ **Wait Step**: Add time-based delays between campaign steps.
+- 🔀 **Condition**: Add logic to branch flows based on user actions (e.g., opened email, clicked link).
+- 🧹 **Clear Steps**: Clear all steps with one click.
+- 📸 **Export Screenshot**: Capture the current canvas view as a downloadable PNG using `html2canvas`.
+- 📦 **Persistent State**: Redux Toolkit + LocalStorage for state persistence.
+- 📐 **Drag & Drop**: Built-in DnD support using `@hello-pangea/dnd`.
+- 🎨 **Modern UI**: Responsive design with TailwindCSS and ShadCN UI.
 ---
 
 ## 🚀 Live Demo
 
 Check out the live version here:  
-🔗 [dashboard-builder-seven.vercel.app](https://dashboard-builder-seven.vercel.app)
+🔗 [dashboard-builder-seven.vercel.app](https://gift-campaign-builder.vercel.app/)
 
 ---
 
